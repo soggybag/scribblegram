@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B3DC49B1A51F6B600E2884E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3DC49A1A51F6B600E2884E /* Social.framework */; };
 		7B59DEB91A50891400E412A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B59DEB81A50891400E412A5 /* AppDelegate.swift */; };
 		7B59DEBB1A50891400E412A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B59DEBA1A50891400E412A5 /* ViewController.swift */; };
 		7B59DEBE1A50891400E412A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B59DEBC1A50891400E412A5 /* Main.storyboard */; };
 		7B59DEC01A50891400E412A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B59DEBF1A50891400E412A5 /* Images.xcassets */; };
 		7B59DEC31A50891400E412A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B59DEC11A50891400E412A5 /* LaunchScreen.xib */; };
 		7B59DECF1A50891400E412A5 /* Color_Picker_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B59DECE1A50891400E412A5 /* Color_Picker_2Tests.swift */; };
+		7B59DED91A5112AD00E412A5 /* SmothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B59DED81A5112AD00E412A5 /* SmothView.swift */; };
+		7B59DF0B1A51C50B00E412A5 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B59DF0A1A51C50B00E412A5 /* OptionsViewController.swift */; };
+		7BD087ED1A5619C000F0D5EE /* startup-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD087EC1A5619C000F0D5EE /* startup-image.png */; };
+		7BD087EF1A561D0E00F0D5EE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD087EE1A561D0E00F0D5EE /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B3DC49A1A51F6B600E2884E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		7B59DEB31A50891400E412A5 /* Color Picker 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Picker 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B59DEB71A50891400E412A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B59DEB81A50891400E412A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +42,10 @@
 		7B59DEC81A50891400E412A5 /* Color Picker 2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color Picker 2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B59DECD1A50891400E412A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B59DECE1A50891400E412A5 /* Color_Picker_2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_Picker_2Tests.swift; sourceTree = "<group>"; };
+		7B59DED81A5112AD00E412A5 /* SmothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmothView.swift; sourceTree = "<group>"; };
+		7B59DF0A1A51C50B00E412A5 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		7BD087EC1A5619C000F0D5EE /* startup-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startup-image.png"; sourceTree = "<group>"; };
+		7BD087EE1A561D0E00F0D5EE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B3DC49B1A51F6B600E2884E /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +70,12 @@
 		7B59DEAA1A50891300E412A5 = {
 			isa = PBXGroup;
 			children = (
+				7B3DC49A1A51F6B600E2884E /* Social.framework */,
 				7B59DEB51A50891400E412A5 /* Color Picker 2 */,
 				7B59DECB1A50891400E412A5 /* Color Picker 2Tests */,
 				7B59DEB41A50891400E412A5 /* Products */,
+				7BD087EC1A5619C000F0D5EE /* startup-image.png */,
+				7BD087EE1A561D0E00F0D5EE /* Default-568h@2x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +93,8 @@
 			children = (
 				7B59DEB81A50891400E412A5 /* AppDelegate.swift */,
 				7B59DEBA1A50891400E412A5 /* ViewController.swift */,
+				7B59DF0A1A51C50B00E412A5 /* OptionsViewController.swift */,
+				7B59DED81A5112AD00E412A5 /* SmothView.swift */,
 				7B59DEBC1A50891400E412A5 /* Main.storyboard */,
 				7B59DEBF1A50891400E412A5 /* Images.xcassets */,
 				7B59DEC11A50891400E412A5 /* LaunchScreen.xib */,
@@ -194,6 +210,8 @@
 			files = (
 				7B59DEBE1A50891400E412A5 /* Main.storyboard in Resources */,
 				7B59DEC31A50891400E412A5 /* LaunchScreen.xib in Resources */,
+				7BD087ED1A5619C000F0D5EE /* startup-image.png in Resources */,
+				7BD087EF1A561D0E00F0D5EE /* Default-568h@2x.png in Resources */,
 				7B59DEC01A50891400E412A5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B59DED91A5112AD00E412A5 /* SmothView.swift in Sources */,
+				7B59DF0B1A51C50B00E412A5 /* OptionsViewController.swift in Sources */,
 				7B59DEBB1A50891400E412A5 /* ViewController.swift in Sources */,
 				7B59DEB91A50891400E412A5 /* AppDelegate.swift in Sources */,
 			);
@@ -289,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -336,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Color Picker 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -346,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Color Picker 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,6 +427,7 @@
 				7B59DED41A50891400E412A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B59DED51A50891400E412A5 /* Build configuration list for PBXNativeTarget "Color Picker 2Tests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +436,7 @@
 				7B59DED71A50891400E412A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
