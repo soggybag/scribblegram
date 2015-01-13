@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D5A988AA-1674-4432-A90F-ECA51F6571CF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Scribblegram</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5E66BBDF7646B33CB88FB84E6BF6F4663B34DDAE</key>
+		<string>https://github.com/soggybag/scribblegram.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Scribblegram.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5E66BBDF7646B33CB88FB84E6BF6F4663B34DDAE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/soggybag/scribblegram.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5E66BBDF7646B33CB88FB84E6BF6F4663B34DDAE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5E66BBDF7646B33CB88FB84E6BF6F4663B34DDAE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Scribblegram</string>
+		</dict>
+	</array>
+</dict>
+</plist>

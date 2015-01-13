@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B59DEB21A50891400E412A5"
-               BuildableName = "Color Picker 2.app"
-               BlueprintName = "Color Picker 2"
-               ReferencedContainer = "container:Color Picker 2.xcodeproj">
+               BuildableName = "Scribblegram.app"
+               BlueprintName = "Scribblegram"
+               ReferencedContainer = "container:Scribblegram.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B59DEC71A50891400E412A5"
-               BuildableName = "Color Picker 2Tests.xctest"
-               BlueprintName = "Color Picker 2Tests"
-               ReferencedContainer = "container:Color Picker 2.xcodeproj">
+               BuildableName = "ScribblegramTests.xctest"
+               BlueprintName = "ScribblegramTests"
+               ReferencedContainer = "container:Scribblegram.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B59DEC71A50891400E412A5"
-               BuildableName = "Color Picker 2Tests.xctest"
-               BlueprintName = "Color Picker 2Tests"
-               ReferencedContainer = "container:Color Picker 2.xcodeproj">
+               BuildableName = "ScribblegramTests.xctest"
+               BlueprintName = "ScribblegramTests"
+               ReferencedContainer = "container:Scribblegram.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B59DEB21A50891400E412A5"
-            BuildableName = "Color Picker 2.app"
-            BlueprintName = "Color Picker 2"
-            ReferencedContainer = "container:Color Picker 2.xcodeproj">
+            BuildableName = "Scribblegram.app"
+            BlueprintName = "Scribblegram"
+            ReferencedContainer = "container:Scribblegram.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B59DEB21A50891400E412A5"
-            BuildableName = "Color Picker 2.app"
-            BlueprintName = "Color Picker 2"
-            ReferencedContainer = "container:Color Picker 2.xcodeproj">
+            BuildableName = "Scribblegram.app"
+            BlueprintName = "Scribblegram"
+            ReferencedContainer = "container:Scribblegram.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B59DEB21A50891400E412A5"
-            BuildableName = "Color Picker 2.app"
-            BlueprintName = "Color Picker 2"
-            ReferencedContainer = "container:Color Picker 2.xcodeproj">
+            BuildableName = "Scribblegram.app"
+            BlueprintName = "Scribblegram"
+            ReferencedContainer = "container:Scribblegram.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

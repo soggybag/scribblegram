@@ -32,14 +32,14 @@
 
 /* Begin PBXFileReference section */
 		7B3DC49A1A51F6B600E2884E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		7B59DEB31A50891400E412A5 /* Color Picker 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Picker 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B59DEB31A50891400E412A5 /* Scribblegram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scribblegram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B59DEB71A50891400E412A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B59DEB81A50891400E412A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B59DEBA1A50891400E412A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7B59DEBD1A50891400E412A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B59DEBF1A50891400E412A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7B59DEC21A50891400E412A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7B59DEC81A50891400E412A5 /* Color Picker 2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color Picker 2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B59DEC81A50891400E412A5 /* ScribblegramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribblegramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B59DECD1A50891400E412A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B59DECE1A50891400E412A5 /* Color_Picker_2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_Picker_2Tests.swift; sourceTree = "<group>"; };
 		7B59DED81A5112AD00E412A5 /* SmothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmothView.swift; sourceTree = "<group>"; };
@@ -71,8 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				7B3DC49A1A51F6B600E2884E /* Social.framework */,
-				7B59DEB51A50891400E412A5 /* Color Picker 2 */,
-				7B59DECB1A50891400E412A5 /* Color Picker 2Tests */,
+				7B59DEB51A50891400E412A5 /* Scribblegram */,
+				7B59DECB1A50891400E412A5 /* ScribblegramTests */,
 				7B59DEB41A50891400E412A5 /* Products */,
 				7BD087EC1A5619C000F0D5EE /* startup-image.png */,
 				7BD087EE1A561D0E00F0D5EE /* Default-568h@2x.png */,
@@ -82,13 +82,13 @@
 		7B59DEB41A50891400E412A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B59DEB31A50891400E412A5 /* Color Picker 2.app */,
-				7B59DEC81A50891400E412A5 /* Color Picker 2Tests.xctest */,
+				7B59DEB31A50891400E412A5 /* Scribblegram.app */,
+				7B59DEC81A50891400E412A5 /* ScribblegramTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B59DEB51A50891400E412A5 /* Color Picker 2 */ = {
+		7B59DEB51A50891400E412A5 /* Scribblegram */ = {
 			isa = PBXGroup;
 			children = (
 				7B59DEB81A50891400E412A5 /* AppDelegate.swift */,
@@ -100,6 +100,7 @@
 				7B59DEC11A50891400E412A5 /* LaunchScreen.xib */,
 				7B59DEB61A50891400E412A5 /* Supporting Files */,
 			);
+			name = Scribblegram;
 			path = "Color Picker 2";
 			sourceTree = "<group>";
 		};
@@ -111,12 +112,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7B59DECB1A50891400E412A5 /* Color Picker 2Tests */ = {
+		7B59DECB1A50891400E412A5 /* ScribblegramTests */ = {
 			isa = PBXGroup;
 			children = (
 				7B59DECE1A50891400E412A5 /* Color_Picker_2Tests.swift */,
 				7B59DECC1A50891400E412A5 /* Supporting Files */,
 			);
+			name = ScribblegramTests;
 			path = "Color Picker 2Tests";
 			sourceTree = "<group>";
 		};
@@ -131,9 +133,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B59DEB21A50891400E412A5 /* Color Picker 2 */ = {
+		7B59DEB21A50891400E412A5 /* Scribblegram */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B59DED21A50891400E412A5 /* Build configuration list for PBXNativeTarget "Color Picker 2" */;
+			buildConfigurationList = 7B59DED21A50891400E412A5 /* Build configuration list for PBXNativeTarget "Scribblegram" */;
 			buildPhases = (
 				7B59DEAF1A50891400E412A5 /* Sources */,
 				7B59DEB01A50891400E412A5 /* Frameworks */,
@@ -143,14 +145,14 @@
 			);
 			dependencies = (
 			);
-			name = "Color Picker 2";
+			name = Scribblegram;
 			productName = "Color Picker 2";
-			productReference = 7B59DEB31A50891400E412A5 /* Color Picker 2.app */;
+			productReference = 7B59DEB31A50891400E412A5 /* Scribblegram.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7B59DEC71A50891400E412A5 /* Color Picker 2Tests */ = {
+		7B59DEC71A50891400E412A5 /* ScribblegramTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B59DED51A50891400E412A5 /* Build configuration list for PBXNativeTarget "Color Picker 2Tests" */;
+			buildConfigurationList = 7B59DED51A50891400E412A5 /* Build configuration list for PBXNativeTarget "ScribblegramTests" */;
 			buildPhases = (
 				7B59DEC41A50891400E412A5 /* Sources */,
 				7B59DEC51A50891400E412A5 /* Frameworks */,
@@ -161,9 +163,9 @@
 			dependencies = (
 				7B59DECA1A50891400E412A5 /* PBXTargetDependency */,
 			);
-			name = "Color Picker 2Tests";
+			name = ScribblegramTests;
 			productName = "Color Picker 2Tests";
-			productReference = 7B59DEC81A50891400E412A5 /* Color Picker 2Tests.xctest */;
+			productReference = 7B59DEC81A50891400E412A5 /* ScribblegramTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7B59DEAE1A50891400E412A5 /* Build configuration list for PBXProject "Color Picker 2" */;
+			buildConfigurationList = 7B59DEAE1A50891400E412A5 /* Build configuration list for PBXProject "Scribblegram" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -197,8 +199,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B59DEB21A50891400E412A5 /* Color Picker 2 */,
-				7B59DEC71A50891400E412A5 /* Color Picker 2Tests */,
+				7B59DEB21A50891400E412A5 /* Scribblegram */,
+				7B59DEC71A50891400E412A5 /* ScribblegramTests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,7 +252,7 @@
 /* Begin PBXTargetDependency section */
 		7B59DECA1A50891400E412A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B59DEB21A50891400E412A5 /* Color Picker 2 */;
+			target = 7B59DEB21A50891400E412A5 /* Scribblegram */;
 			targetProxy = 7B59DEC91A50891400E412A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -359,7 +361,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Color Picker 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Scribblegram;
 			};
 			name = Debug;
 		};
@@ -370,7 +372,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Color Picker 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Scribblegram;
 			};
 			name = Release;
 		};
@@ -388,8 +390,8 @@
 				);
 				INFOPLIST_FILE = "Color Picker 2Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Picker 2.app/Color Picker 2";
+				PRODUCT_NAME = ScribblegramTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribblegram.app/Scribblegram";
 			};
 			name = Debug;
 		};
@@ -403,15 +405,15 @@
 				);
 				INFOPLIST_FILE = "Color Picker 2Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Picker 2.app/Color Picker 2";
+				PRODUCT_NAME = ScribblegramTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribblegram.app/Scribblegram";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B59DEAE1A50891400E412A5 /* Build configuration list for PBXProject "Color Picker 2" */ = {
+		7B59DEAE1A50891400E412A5 /* Build configuration list for PBXProject "Scribblegram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B59DED01A50891400E412A5 /* Debug */,
@@ -420,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B59DED21A50891400E412A5 /* Build configuration list for PBXNativeTarget "Color Picker 2" */ = {
+		7B59DED21A50891400E412A5 /* Build configuration list for PBXNativeTarget "Scribblegram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B59DED31A50891400E412A5 /* Debug */,
@@ -429,7 +431,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B59DED51A50891400E412A5 /* Build configuration list for PBXNativeTarget "Color Picker 2Tests" */ = {
+		7B59DED51A50891400E412A5 /* Build configuration list for PBXNativeTarget "ScribblegramTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B59DED61A50891400E412A5 /* Debug */,

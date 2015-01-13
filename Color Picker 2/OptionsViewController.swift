@@ -85,7 +85,12 @@ class OptionsViewController: UIViewController {
         let point = panGesture.translationInView(self.view)
         
         brushSize = lastBrushSize - (point.y / 2)
-        brushAlpha = 1 - (point.x / 200) - lastBrushAlpha
+        
+        var newAlpha = max(0, min(point.x / 200, 1))
+        // newAlpha = newAlpha + lastBrushAlpha
+        // println("\(newAlpha) \(lastBrushAlpha)")
+        
+        brushAlpha = newAlpha
         
         updateBrush()
     }
