@@ -174,6 +174,8 @@
 		7B59DEAB1A50891400E412A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "mitchell hudson";
 				TargetAttributes = {
@@ -361,6 +363,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Color Picker 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.webdevils.Color-Picker-2";
 				PRODUCT_NAME = Scribblegram;
 			};
 			name = Debug;
@@ -372,6 +375,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Color Picker 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.webdevils.Color-Picker-2";
 				PRODUCT_NAME = Scribblegram;
 			};
 			name = Release;

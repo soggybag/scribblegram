@@ -21,12 +21,12 @@ class SmothView: UIView {
     var ctr: Int = 0    // Index of current point as drawing
     
     // Init this view
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.multipleTouchEnabled = false           // Only one finger
         self.backgroundColor = UIColor.whiteColor() // set the background color
         path.lineWidth = 2                          // Set the line width
-        path.lineCapStyle = kCGLineCapRound
+        path.lineCapStyle = CGLineCap.Round
     }
 
     
@@ -38,39 +38,47 @@ class SmothView: UIView {
         path.stroke()                       // Stroke the path
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        ctr = 0
-        let touch = touches.anyObject() as UITouch
-        pts[0] = touch.locationInView(self)
-    }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
-        let p = touch.locationInView(self)
-        ctr++
-        pts[ctr] = p
-        if ctr == 4 {
-            pts[3] = CGPointMake((pts[2].x + pts[4].x)/2.0, (pts[2].y + pts[4].y)/2.0)
-            path.moveToPoint(pts[0])
-            path.addCurveToPoint(pts[3], controlPoint1: pts[1], controlPoint2: pts[2])
-            
-            self.setNeedsDisplay()
-            
-            pts[0] = pts[3]
-            pts[1] = pts[4]
-            ctr = 1
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            ctr = 0
+            // let touch = touches.anyObject() as! UITouch
+            pts[0] = touch.locationInView(self)
         }
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // let touch = touches.anyObject() as! UITouch
+        if let touch = touches.first {
+            let p = touch.locationInView(self)
+            ctr++
+            pts[ctr] = p
+            if ctr == 4 {
+                pts[3] = CGPointMake((pts[2].x + pts[4].x)/2.0, (pts[2].y + pts[4].y)/2.0)
+                path.moveToPoint(pts[0])
+                path.addCurveToPoint(pts[3], controlPoint1: pts[1], controlPoint2: pts[2])
+                
+                self.setNeedsDisplay()
+                
+                pts[0] = pts[3]
+                pts[1] = pts[4]
+                ctr = 1
+            }
+        }
+    }
+    
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.drawBitmap()
         self.setNeedsDisplay()
         path.removeAllPoints()
         ctr = 0
+
     }
     
-    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
-        self.touchesEnded(touches, withEvent: event)
+    
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        self.touchesEnded(touches!, withEvent: event)
     }
     
     
@@ -81,14 +89,14 @@ class SmothView: UIView {
         UIColor.whiteColor().setFill()
         rectPath.fill()
         
-        incrementalImage.drawAtPoint(CGPoint.zeroPoint)
+        incrementalImage.drawAtPoint(CGPoint.zero)
         color.setStroke()
         path.stroke()
         incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
     
-    func setColor(newColor: UIColor) {
+    func setNewColor(newColor: UIColor) {
         color = newColor.colorWithAlphaComponent(brushAlpha)
     }
     

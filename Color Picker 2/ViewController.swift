@@ -10,10 +10,19 @@
 // Update UIActionSheet and UIAlert with UIAlertController
 // https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAlertController_class/
 
+
+// TODO:
 // Adjust UIView Canvas to height just above color picker
 
-// Looks for color picker bug
+// Look for color picker bug
     // Happened after options screen
+// Work on brush size and alpha setting the interaction is not great
+// Post an update with the #scribblegram hash tag for twitter
+// Add login for FaceBook/Parse 
+    // Create a login controller
+    // Add Parse backend for saving images. 
+    // Need a Scribblegram browser to show scribbles 
+
 
 
 import UIKit
@@ -60,23 +69,23 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         UIGraphicsBeginImageContextWithOptions(self.canvasView.bounds.size, true, 0.0)
-        self.canvasView.layer.renderInContext(UIGraphicsGetCurrentContext())
+        self.canvasView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
         switch buttonIndex {
         case 0:                 // ???
-            println("button 0")
+            print("button 0")
             
         case 1:                 // Camera Roll
-            println("button 1")
+            print("button 1")
             UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
             
             
         case 2:                 // Tweet
-            println("Button 2")
+            print("Button 2")
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
                 let tweetVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                tweetVC.setInitialText("Doodlegram")
+                tweetVC.setInitialText("#scribblegram")
                 tweetVC.addImage(image)
                 self.presentViewController(tweetVC, animated: true, completion: {() in
                     
@@ -107,12 +116,12 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     
     func actionSheetCancel(actionSheet: UIActionSheet) {
-        println("Actionsheet cancel")
+        print("Actionsheet cancel")
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo: UnsafePointer<()> ) {
         if error != nil {
-            println("Error saving image to camera roll \(error.debugDescription)")
+            print("Error saving image to camera roll \(error.debugDescription)")
         } else {
             let alertView = UIAlertView(title: "", message: "Image saved to camera roll", delegate: nil, cancelButtonTitle: "Close")
             alertView.show()
@@ -180,27 +189,34 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     // MARK: - Touch handlers 
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
-        let loc = touch.locationInView(self.view)
-        selectColor(loc)
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            // let touch = touches.anyObject() as! UITouch
+            let loc = touch.locationInView(self.view)
+            selectColor(loc)
+        }
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
-        let loc = touch.locationInView(self.view)
-        selectColor(loc)
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // let touch = touches.anyObject() as! UITouch
+        if let touch = touches.first {
+            let loc = touch.locationInView(self.view)
+            selectColor(loc)
+        }
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
-        let loc = touch.locationInView(self.view)
-        finishedSelectingColor(loc)
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // let touch = touches.anyObject() as! UITouch
+        if let touch = touches.first {
+            let loc = touch.locationInView(self.view)
+            finishedSelectingColor(loc)
+        }
     }
     
-    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
-        touchesEnded(touches, withEvent: event)
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        touchesEnded(touches!, withEvent: event)
     }
+
     
     
     
@@ -246,16 +262,16 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
         let delay = NSTimeInterval(0.0)
         let options = UIViewAnimationOptions.CurveEaseOut
         
-        println("finish Selecting color: \(boxes.count) \(colors.count)")
+        print("finish Selecting color: \(boxes.count) \(colors.count)")
         
         // get selected color 
         if let point = point {
-            println("\(point)")
+            print("\(point)")
             for i in 0..<boxes.count {
                 if boxes[i].frame.contains(point) {
-                    println("\(i)")
+                    print("\(i)")
                     if i >= 0 && i < colors.count {
-                        canvasView.setColor(colors[i])
+                        canvasView.setNewColor(colors[i])
                     }
                 }
             }
@@ -274,15 +290,15 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     func makeBoxes() {
         var count:CGFloat = 0
-        var height: CGFloat = 150
-        var distanceFromBottom: CGFloat = 60
-        var width:CGFloat = self.view.frame.width / CGFloat(colors.count)
-        var y: CGFloat = self.view.frame.height - distanceFromBottom
+        let height: CGFloat = 150
+        let distanceFromBottom: CGFloat = 60
+        let width:CGFloat = self.view.frame.width / CGFloat(colors.count)
+        let y: CGFloat = self.view.frame.height - distanceFromBottom
         
-        println("Make boxes:")
+        print("Make boxes:")
         
         for color in colors {
-            println("adding a colored box \(color)")
+            print("adding a colored box \(color)")
             let rect = CGRectMake(count * width, y, width, height)
             let box = UIView(frame: rect)
             // box.alpha = 0.5
@@ -298,7 +314,7 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController.isKindOfClass(OptionsViewController) {
-            let optionsVC = segue.destinationViewController as OptionsViewController
+            let optionsVC = segue.destinationViewController as! OptionsViewController
             optionsVC.delegate = self
             optionsVC.setBrush(brushSize, newAlpha: brushAlpha)
         }
@@ -312,6 +328,11 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
         self.brushAlpha = controller.brushAlpha
         self.dismissViewControllerAnimated(true, completion: {})
         canvasView.setBrush(self.brushSize, alpha: self.brushAlpha)
+    }
+    
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 }
 

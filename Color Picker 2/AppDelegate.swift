@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 mitchell hudson. All rights reserved.
 //
 
+// TODO: add connection to Parse 
+
 import UIKit
 
 @UIApplicationMain
