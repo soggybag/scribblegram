@@ -11,3 +11,4 @@ Core Graphics, and Multithreading.
 The app allows drawings to be saved to your photo library. Drawings can also be posted to Twitter, or FaceBook. 
 
 ![Scribblegram image](https://github.com/soggybag/scribblegram/blob/master/Default-568h%402x.png)
+![Scribblegram gif](screencast.gif)
