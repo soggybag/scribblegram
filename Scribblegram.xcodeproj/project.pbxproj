@@ -181,9 +181,11 @@
 				TargetAttributes = {
 					7B59DEB21A50891400E412A5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 					};
 					7B59DEC71A50891400E412A5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 7B59DEB21A50891400E412A5;
 					};
 				};
@@ -365,6 +367,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.webdevils.Color-Picker-2";
 				PRODUCT_NAME = Scribblegram;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -377,6 +380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.webdevils.Color-Picker-2";
 				PRODUCT_NAME = Scribblegram;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -395,6 +399,7 @@
 				INFOPLIST_FILE = "Color Picker 2Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = ScribblegramTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribblegram.app/Scribblegram";
 			};
 			name = Debug;
@@ -410,6 +415,7 @@
 				INFOPLIST_FILE = "Color Picker 2Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = ScribblegramTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scribblegram.app/Scribblegram";
 			};
 			name = Release;

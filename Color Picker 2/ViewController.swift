@@ -33,17 +33,17 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     // Default colors
     
     let colors = [
-        UIColor.redColor(),
-        UIColor.orangeColor(),
-        UIColor.yellowColor(),
-        UIColor.greenColor(),
-        UIColor.cyanColor(),
-        UIColor.blueColor(),
-        UIColor.purpleColor(),
-        UIColor.magentaColor(),
-        UIColor.grayColor(),
-        UIColor.blackColor(),
-        UIColor.whiteColor()
+        UIColor.red,
+        UIColor.orange,
+        UIColor.yellow,
+        UIColor.green,
+        UIColor.cyan,
+        UIColor.blue,
+        UIColor.purple,
+        UIColor.magenta,
+        UIColor.gray,
+        UIColor.black,
+        UIColor.white
     ]
     
     // variables
@@ -60,16 +60,16 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     // MARK: - IBActions
     
-    @IBAction func shareButtonPressed(sender: AnyObject) {
+    @IBAction func shareButtonPressed(_ sender: AnyObject) {
         let actionSheet = UIActionSheet(title: "Share your image", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Save to Camera roll", "Tweet it!", "Facebook")
-        actionSheet.showInView(self.view)
+        actionSheet.show(in: self.view)
     }
     
     // MARK: ActionSheet delegate methods
     
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         UIGraphicsBeginImageContextWithOptions(self.canvasView.bounds.size, true, 0.0)
-        self.canvasView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        self.canvasView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
         switch buttonIndex {
@@ -78,16 +78,22 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
             
         case 1:                 // Camera Roll
             print("button 1")
-            UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+            
+            UIImageWriteToSavedPhotosAlbum(image!,
+                                           self,
+                                           #selector(image(_:didFinishSavingWithError:contextInfo:)),
+                                           nil)
+            
+            // UIImageWriteToSavedPhotosAlbum(image!, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
             
             
         case 2:                 // Tweet
             print("Button 2")
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
                 let tweetVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                tweetVC.setInitialText("#scribblegram")
-                tweetVC.addImage(image)
-                self.presentViewController(tweetVC, animated: true, completion: {() in
+                tweetVC?.setInitialText("#scribblegram")
+                tweetVC?.add(image)
+                self.present(tweetVC!, animated: true, completion: {() in
                     
                 })
             } else {
@@ -96,11 +102,11 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
             }
             
         case 3:
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
                 let fbVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                fbVC.setInitialText("Doodlegram")
-                fbVC.addImage(image)
-                self.presentViewController(fbVC, animated: true, completion: {() in
+                fbVC?.setInitialText("Doodlegram")
+                fbVC?.add(image)
+                self.present(fbVC!, animated: true, completion: {() in
                 
                 })
             } else {
@@ -115,11 +121,11 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     }
     
     
-    func actionSheetCancel(actionSheet: UIActionSheet) {
+    func actionSheetCancel(_ actionSheet: UIActionSheet) {
         print("Actionsheet cancel")
     }
     
-    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo: UnsafePointer<()> ) {
+    func image(_ image: UIImage, didFinishSavingWithError error: NSError, contextInfo: UnsafeRawPointer ) {
         if error != nil {
             print("Error saving image to camera roll \(error.debugDescription)")
         } else {
@@ -144,7 +150,7 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     }
 
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
@@ -154,7 +160,7 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     // MARK: - Setup Getsures
     
     func setupGestures() {
-        let longPress = UILongPressGestureRecognizer(target: self, action: "onPress:")
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.onPress(_:)))
         longPress.minimumPressDuration = 0.2
         longPress.cancelsTouchesInView = true
         longPress.delaysTouchesBegan = false
@@ -162,20 +168,20 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
         // self.view.addGestureRecognizer(longPress)
     }
     
-    func onPress(longPress: UILongPressGestureRecognizer) {
-        let loc = longPress.locationInView(self.view)
+    func onPress(_ longPress: UILongPressGestureRecognizer) {
+        let loc = longPress.location(in: self.view)
         switch longPress.state {
-        case .Began:
+        case .began:
             selectColor(loc)
             
-        case .Changed:
+        case .changed:
             selectColor(loc)
             
-        case .Ended:
+        case .ended:
             // selectColor(nil)
             finishedSelectingColor(loc)
             
-        case .Cancelled:
+        case .cancelled:
             // selectColor(nil)
             finishedSelectingColor(loc)
             
@@ -189,38 +195,38 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     // MARK: - Touch handlers 
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             // let touch = touches.anyObject() as! UITouch
-            let loc = touch.locationInView(self.view)
+            let loc = touch.location(in: self.view)
             selectColor(loc)
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // let touch = touches.anyObject() as! UITouch
         if let touch = touches.first {
-            let loc = touch.locationInView(self.view)
+            let loc = touch.location(in: self.view)
             selectColor(loc)
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // let touch = touches.anyObject() as! UITouch
         if let touch = touches.first {
-            let loc = touch.locationInView(self.view)
+            let loc = touch.location(in: self.view)
             finishedSelectingColor(loc)
         }
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        touchesEnded(touches!, withEvent: event)
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchesEnded(touches, with: event)
     }
 
     
     
     
-    func touchInColorBoxes(point: CGPoint?) -> Bool {
+    func touchInColorBoxes(_ point: CGPoint?) -> Bool {
         if let point = point {
             for box in boxes {
                 if box.frame.contains(point) {
@@ -232,7 +238,7 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     }
     
     
-    func selectColor(point: CGPoint?) {
+    func selectColor(_ point: CGPoint?) {
         let colorBoxIsTouched = touchInColorBoxes(point)
         var distances = [CGFloat]()
         
@@ -248,19 +254,19 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
                 let adjustedDistance = xRange - min(xRange, distance)
                 let distanceScale = adjustedDistance / xRange
                 let height = 100 + (distanceScale * 50)
-                let newRect = CGRectMake(box.frame.origin.x, baseY - adjustedDistance, box.frame.width, height)
+                _ = CGRect(x: box.frame.origin.x, y: baseY - adjustedDistance, width: box.frame.width, height: height)
                 
                 let yscale = 1 + (distanceScale * 1.5)
-                box.transform = CGAffineTransformMakeScale(1, yscale)
+                box.transform = CGAffineTransform(scaleX: 1, y: yscale)
             }
         }
     }
     
     
-    func finishedSelectingColor(point: CGPoint?) {
-        let duration = NSTimeInterval(0.3)
-        let delay = NSTimeInterval(0.0)
-        let options = UIViewAnimationOptions.CurveEaseOut
+    func finishedSelectingColor(_ point: CGPoint?) {
+        let duration = TimeInterval(0.3)
+        let delay = TimeInterval(0.0)
+        let options = UIViewAnimationOptions.curveEaseOut
         
         print("finish Selecting color: \(boxes.count) \(colors.count)")
         
@@ -277,9 +283,9 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
             }
         }
 
-        UIView.animateWithDuration(duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 20, options: options, animations: {
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 20, options: options, animations: {
             for box in self.boxes {
-                box.transform = CGAffineTransformMakeScale(1, 1)
+                box.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }, completion: nil)
     }
@@ -299,22 +305,22 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
         
         for color in colors {
             print("adding a colored box \(color)")
-            let rect = CGRectMake(count * width, y, width, height)
+            let rect = CGRect(x: count * width, y: y, width: width, height: height)
             let box = UIView(frame: rect)
             // box.alpha = 0.5
             box.backgroundColor = color
             self.view.addSubview(box)
             boxes.append(box)
-            count++
+            count += 1
         }
     }
     
     
     // MARK: - Segue handlers 
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController.isKindOfClass(OptionsViewController) {
-            let optionsVC = segue.destinationViewController as! OptionsViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination.isKind(of: OptionsViewController.self) {
+            let optionsVC = segue.destination as! OptionsViewController
             optionsVC.delegate = self
             optionsVC.setBrush(brushSize, newAlpha: brushAlpha)
         }
@@ -323,15 +329,15 @@ class ViewController: UIViewController, OptionsViewControllerDelegate, UIActionS
     
     // MARK: - OptionsViewControllerDelegate methods
     
-    func optionsViewControllerDone(controller: OptionsViewController) {
+    func optionsViewControllerDone(_ controller: OptionsViewController) {
         self.brushSize = controller.brushSize
         self.brushAlpha = controller.brushAlpha
-        self.dismissViewControllerAnimated(true, completion: {})
+        self.dismiss(animated: true, completion: {})
         canvasView.setBrush(self.brushSize, alpha: self.brushAlpha)
     }
     
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }

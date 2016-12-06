@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol OptionsViewControllerDelegate {
-    func optionsViewControllerDone(controller: OptionsViewController)
+    func optionsViewControllerDone(_ controller: OptionsViewController)
 }
 
 
@@ -42,10 +42,9 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var brushPreview: UIImageView!
     @IBOutlet weak var brushOutline: UIImageView!
     
-    
     // MARK: - IBActions
     
-    @IBAction func doneButtonPressed(sender: AnyObject) {
+    @IBAction func doneButtonPressed(_ sender: AnyObject) {
         if delegate != nil {
             delegate?.optionsViewControllerDone(self)
         }
@@ -57,7 +56,7 @@ class OptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let pan = UIPanGestureRecognizer(target: self, action: "onPan:")
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(OptionsViewController.onPan(_:)))
         self.view.addGestureRecognizer(pan)
         drawBrushOutline()
         updateBrush()
@@ -75,15 +74,15 @@ class OptionsViewController: UIViewController {
     
     // MARK: - UIGesture handlers 
     
-    func onPan(panGesture: UIPanGestureRecognizer) {
-        let translation = panGesture.translationInView(self.view)
+    func onPan(_ panGesture: UIPanGestureRecognizer) {
+        let translation = panGesture.translation(in: self.view)
         
-        if panGesture.state == UIGestureRecognizerState.Began {
+        if panGesture.state == UIGestureRecognizerState.began {
             lastBrushAlpha = brushAlpha
             lastBrushSize = brushSize
         }
         
-        if panGesture.state == UIGestureRecognizerState.Changed {
+        if panGesture.state == UIGestureRecognizerState.changed {
             // print("tx: \(translation.x) ty:\(translation.y)")
             
             let newSize = lastBrushSize + translation.x
@@ -133,34 +132,43 @@ class OptionsViewController: UIViewController {
         let centerY = brushPreview.frame.size.height / 2
         
         UIGraphicsBeginImageContext(brushPreview.frame.size)
-        CGContextSetLineCap(UIGraphicsGetCurrentContext(), CGLineCap.Round)
-        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brushSize)
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0, 0, 0, brushAlpha)
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), centerX, centerY)
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), centerX, centerY)
-        CGContextStrokePath(UIGraphicsGetCurrentContext())
+        UIGraphicsGetCurrentContext()?.setLineCap(CGLineCap.round)
+        UIGraphicsGetCurrentContext()?.setLineWidth(brushSize)
+        UIGraphicsGetCurrentContext()?.setStrokeColor(red: 0, green: 0, blue: 0, alpha: brushAlpha)
+        UIGraphicsGetCurrentContext()?.move(to: CGPoint(x: centerX, y: centerY))
+        UIGraphicsGetCurrentContext()?.addLine(to: CGPoint(x: centerX, y: centerY))
+        UIGraphicsGetCurrentContext()?.strokePath()
         brushPreview.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
     
     func drawBrushOutline() {
+        guard let context = UIGraphicsGetCurrentContext() else {
+            print("Unable to get graphics context for brush outline.")
+            return
+        }
+        
         let centerX: CGFloat = brushOutline.frame.size.width / 2
         let centerY: CGFloat = brushOutline.frame.size.height / 2
         
         UIGraphicsBeginImageContext(brushOutline.frame.size)
-        CGContextSetLineCap(UIGraphicsGetCurrentContext(), CGLineCap.Round)
-        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 1.0)
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0.5, 0.5, 0.5, 1.0)
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), centerX + (maxBrushSize / 2), centerY)
-        CGContextAddArc(UIGraphicsGetCurrentContext(), centerX, centerY, CGFloat(maxBrushSize / 2), CGFloat(0.0), CGFloat(Float(M_PI) * 2.0), 1)
-        CGContextStrokePath(UIGraphicsGetCurrentContext())
+        context.setLineCap(CGLineCap.round)
+        context.setLineWidth(1.0)
+        context.setStrokeColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        context.move(to: CGPoint(x: centerX + (maxBrushSize / 2), y: centerY))
+        
+        
+        
+       //  CGContextAddArc(UIGraphicsGetCurrentContext(), centerX, centerY, CGFloat(maxBrushSize / 2), CGFloat(0.0), CGFloat(Float(M_PI) * 2.0), 1)
+        
+        UIGraphicsGetCurrentContext()?.strokePath()
         brushOutline.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
   
     //
     
-    func setBrush(newSize: CGFloat, newAlpha: CGFloat) {
+    func setBrush(_ newSize: CGFloat, newAlpha: CGFloat) {
         self.brushAlpha = newAlpha
         self.brushSize = newSize
         self.lastBrushAlpha = self.brushAlpha

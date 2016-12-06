@@ -13,7 +13,7 @@ class SmothView: UIView {
     var brushSize: CGFloat = 2.0
     var brushAlpha: CGFloat = 1.0
     
-    var color = UIColor.blackColor()    // starting color
+    var color = UIColor.black    // starting color
     var path = UIBezierPath()           // Path to draw
     var incrementalImage = UIImage()    // Temp image holds the current drawing
     // An array of points to create a stroke
@@ -23,40 +23,40 @@ class SmothView: UIView {
     // Init this view
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.multipleTouchEnabled = false           // Only one finger
-        self.backgroundColor = UIColor.whiteColor() // set the background color
+        self.isMultipleTouchEnabled = false           // Only one finger
+        self.backgroundColor = UIColor.white // set the background color
         path.lineWidth = 2                          // Set the line width
-        path.lineCapStyle = CGLineCap.Round
+        path.lineCapStyle = CGLineCap.round
     }
 
     
     //
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Drawing code
         color.setStroke()                   // Set the stroke color fro incremental drawing
-        incrementalImage.drawInRect(rect)   // Draw an increment
+        incrementalImage.draw(in: rect)   // Draw an increment
         path.stroke()                       // Stroke the path
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             ctr = 0
             // let touch = touches.anyObject() as! UITouch
-            pts[0] = touch.locationInView(self)
+            pts[0] = touch.location(in: self)
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // let touch = touches.anyObject() as! UITouch
         if let touch = touches.first {
-            let p = touch.locationInView(self)
-            ctr++
+            let p = touch.location(in: self)
+            ctr += 1
             pts[ctr] = p
             if ctr == 4 {
-                pts[3] = CGPointMake((pts[2].x + pts[4].x)/2.0, (pts[2].y + pts[4].y)/2.0)
-                path.moveToPoint(pts[0])
-                path.addCurveToPoint(pts[3], controlPoint1: pts[1], controlPoint2: pts[2])
+                pts[3] = CGPoint(x: (pts[2].x + pts[4].x)/2.0, y: (pts[2].y + pts[4].y)/2.0)
+                path.move(to: pts[0])
+                path.addCurve(to: pts[3], controlPoint1: pts[1], controlPoint2: pts[2])
                 
                 self.setNeedsDisplay()
                 
@@ -68,7 +68,7 @@ class SmothView: UIView {
     }
     
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.drawBitmap()
         self.setNeedsDisplay()
         path.removeAllPoints()
@@ -77,8 +77,8 @@ class SmothView: UIView {
     }
     
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        self.touchesEnded(touches!, withEvent: event)
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.touchesEnded(touches, with: event)
     }
     
     
@@ -86,25 +86,25 @@ class SmothView: UIView {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0.0)
         
         let rectPath = UIBezierPath(rect: self.bounds)
-        UIColor.whiteColor().setFill()
+        UIColor.white.setFill()
         rectPath.fill()
         
-        incrementalImage.drawAtPoint(CGPoint.zero)
+        incrementalImage.draw(at: CGPoint.zero)
         color.setStroke()
         path.stroke()
-        incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+        incrementalImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
     }
     
-    func setNewColor(newColor: UIColor) {
-        color = newColor.colorWithAlphaComponent(brushAlpha)
+    func setNewColor(_ newColor: UIColor) {
+        color = newColor.withAlphaComponent(brushAlpha)
     }
     
-    func setBrush(width: CGFloat, alpha: CGFloat) {
+    func setBrush(_ width: CGFloat, alpha: CGFloat) {
         brushSize = width
         path.lineWidth = width
         brushAlpha = alpha
-        color = color.colorWithAlphaComponent(alpha)
+        color = color.withAlphaComponent(alpha)
     }
 }
 
