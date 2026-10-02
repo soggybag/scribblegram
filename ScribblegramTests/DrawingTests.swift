@@ -66,4 +66,17 @@ struct CanvasModelTests {
         #expect(model.cache?.size == CGSize(width: 100, height: 50))
         #expect(model.cache?.scale == 2)
     }
+
+    @Test func clearRemovesStrokesAndResetsCache() throws {
+        let model = CanvasModel()
+        model.setCanvas(size: CGSize(width: 100, height: 50), scale: 2)
+        model.addPoint(CGPoint(x: 10, y: 10))
+        model.endStroke()
+        let drawn = model.cache
+
+        model.clear()
+        #expect(model.drawing.strokes.isEmpty)
+        #expect(model.cache != nil && model.cache !== drawn)
+        #expect(model.cache?.size == CGSize(width: 100, height: 50))
+    }
 }

@@ -43,6 +43,14 @@ final class CanvasModel {
         append([stroke])
     }
 
+    func clear() {
+        liveStroke = nil
+        drawing = Drawing()
+        guard let old = raster, let raster = StrokeRaster(size: old.size, scale: old.scale) else { return }
+        self.raster = raster
+        cache = raster.image()
+    }
+
     func append(_ strokes: [Stroke]) {
         drawing.strokes.append(contentsOf: strokes)
         guard let raster else { return }
