@@ -1,11 +1,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var model = CanvasModel()
+
     var body: some View {
-        Text("Scribblegram")
-            .font(.largeTitle)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.white)
+        CanvasView(model: model)
+            .ignoresSafeArea()
+            // Keep edge swipes for drawing; system gestures need a second swipe.
+            .defersSystemGestures(on: .all)
+            .statusBarHidden()
+            #if DEBUG
+            .overlay(alignment: .topLeading) {
+                DebugOverlay(model: model).padding()
+            }
+            #endif
     }
 }
 
